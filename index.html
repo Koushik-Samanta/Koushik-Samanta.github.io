@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koushik Samanta — Senior Full Stack Developer</title>
+    <meta name="description" content="Koushik Samanta — Senior Full Stack Developer specializing in React, Node.js and AWS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg:#0A1F33;
+            --bg-alt:#0D2540;
+            --grid:rgba(234,242,251,0.05);
+            --grid-strong:rgba(234,242,251,0.09);
+            --ink:#EAF2FB;
+            --ink-dim:#8FA9C4;
+            --ink-faint:#5D7A9A;
+            --accent:#FF6B35;
+            --accent-dim:#C9502A;
+            --line:rgba(234,242,251,0.14);
+            --mono:'JetBrains Mono', monospace;
+            --display:'Space Grotesk', sans-serif;
+            --body:'Inter', sans-serif;
+        }
+        *{box-sizing:border-box; margin:0; padding:0;}
+        html{scroll-behavior:smooth;}
+        body{
+            background:var(--bg);
+            color:var(--ink);
+            font-family:var(--body);
+            line-height:1.6;
+            background-image:
+                    linear-gradient(var(--grid) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size:48px 48px;
+        }
+        @media (prefers-reduced-motion: reduce){
+            *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+        }
+        a{color:inherit;}
+        .wrap{max-width:980px; margin:0 auto; padding:0 28px;}
+
+        /* ---------- NAV ---------- */
+        nav{
+            position:sticky; top:0; z-index:50;
+            background:rgba(10,31,51,0.85);
+            backdrop-filter:blur(8px);
+            border-bottom:1px solid var(--line);
+        }
+        nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+        .brand{font-family:var(--mono); font-size:14px; letter-spacing:0.5px; color:var(--ink);}
+        .brand span{color:var(--accent);}
+        .navlinks{display:flex; gap:28px; font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:1px;}
+        .navlinks a{color:var(--ink-dim); text-decoration:none; transition:color .2s; margin-left:28px;}
+        .navlinks a:first-child{margin-left:0;}
+        .navlinks a:hover{color:var(--accent);}
+        @media (max-width:640px){ .navlinks{display:none;} }
+
+        /* ---------- HERO ---------- */
+        header.hero{padding:120px 0 90px; position:relative; overflow:hidden;}
+        .eyebrow{
+            font-family:var(--mono); font-size:12px; letter-spacing:2px; text-transform:uppercase;
+            color:var(--accent); display:flex; align-items:center; gap:10px; margin-bottom:24px;
+        }
+        .eyebrow::before{content:''; width:24px; height:1px; background:var(--accent);}
+        h1{
+            font-family:var(--display); font-weight:700;
+            font-size:clamp(38px, 6vw, 64px);
+            line-height:1.05; letter-spacing:-1px; max-width:820px;
+        }
+        h1 .accent{color:var(--accent);}
+        .lede{
+            margin-top:22px; max-width:600px; color:var(--ink-dim); font-size:18px; line-height:1.7;
+        }
+        .hero-meta{
+            display:flex; flex-wrap:wrap; gap:28px; margin-top:36px;
+            font-family:var(--mono); font-size:13px; color:var(--ink-faint);
+        }
+        .hero-meta div{display:flex; align-items:center; gap:8px;}
+        .dot{width:6px; height:6px; border-radius:50%; background:var(--accent);}
+        .cta-row{display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;}
+        .btn{
+            font-family:var(--mono); font-size:13px; letter-spacing:0.5px; text-decoration:none;
+            padding:13px 24px; border-radius:2px; transition:all .2s; display:inline-block;
+        }
+        .btn-primary{background:var(--accent); color:#0A1F33; font-weight:500;}
+        .btn-primary:hover{background:#ff8259;}
+        .btn-ghost{border:1px solid var(--line); color:var(--ink);}
+        .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+        /* ---------- SECTION LABEL ---------- */
+        .section{padding:80px 0;}
+        .section-head{display:flex; align-items:baseline; gap:16px; margin-bottom:44px;}
+        .section-num{font-family:var(--mono); color:var(--accent); font-size:13px;}
+        h2{font-family:var(--display); font-size:28px; font-weight:600; letter-spacing:-0.5px;}
+        .section-head::after{content:''; flex:1; height:1px; background:var(--line);}
+
+        /* ---------- SKILLS ---------- */
+        .skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+        .skill-card{background:var(--bg); padding:24px;}
+        .skill-card h3{font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:1.5px; color:var(--accent); margin-bottom:14px;}
+        .skill-tags{display:flex; flex-wrap:wrap; gap:8px;}
+        .tag{font-family:var(--mono); font-size:12px; color:var(--ink-dim); border:1px solid var(--line); padding:5px 10px; border-radius:2px;}
+
+        /* ---------- ROUTE / TIMELINE ---------- */
+        .route{position:relative; padding-left:40px;}
+        .route-line{
+            position:absolute; left:8px; top:6px; bottom:6px; width:2px;
+            background:repeating-linear-gradient(to bottom, var(--accent) 0, var(--accent) 6px, transparent 6px, transparent 12px);
+            opacity:0.5;
+        }
+        .waypoint{position:relative; padding-bottom:56px;}
+        .waypoint:last-child{padding-bottom:0;}
+        .pin{
+            position:absolute; left:-40px; top:2px; width:18px; height:18px; border-radius:50%;
+            background:var(--bg); border:2px solid var(--accent);
+        }
+        .pin::after{content:''; position:absolute; inset:4px; border-radius:50%; background:var(--accent);}
+        .waypoint-year{font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:1px;}
+        .waypoint h3{font-family:var(--display); font-size:20px; font-weight:600; margin-top:6px;}
+        .waypoint .role-co{color:var(--ink-dim); font-size:14px; margin-top:2px; margin-bottom:12px;}
+        .waypoint ul{padding-left:18px; color:var(--ink-dim); font-size:14.5px;}
+        .waypoint li{margin-bottom:6px;}
+        .waypoint li::marker{color:var(--accent);}
+
+        /* ---------- PROJECTS ---------- */
+        .projects{display:grid; grid-template-columns:1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+        .project{background:var(--bg-alt); padding:32px; display:grid; grid-template-columns:1fr; gap:14px;}
+        @media(min-width:760px){ .project{grid-template-columns:200px 1fr;} }
+        .project-index{font-family:var(--mono); font-size:34px; color:var(--line); font-weight:600;}
+        .project-title{font-family:var(--display); font-size:22px; font-weight:600; margin-bottom:8px;}
+        .project-title a{text-decoration:none; border-bottom:1px solid transparent; transition:border-color .2s;}
+        .project.flagship .project-title a{color:var(--accent);}
+        .project-desc{color:var(--ink-dim); font-size:14.5px; margin-bottom:14px; max-width:600px;}
+        .project-stack{display:flex; flex-wrap:wrap; gap:8px;}
+        .badge{
+            font-family:var(--mono); font-size:11px; color:var(--ink-faint); border:1px solid var(--line); padding:4px 9px; border-radius:2px;
+        }
+        .flagship-flag{
+            display:inline-block; font-family:var(--mono); font-size:11px; color:var(--accent); border:1px solid var(--accent-dim);
+            padding:3px 8px; margin-bottom:10px; letter-spacing:1px; text-transform:uppercase;
+        }
+
+        /* ---------- CONTACT ---------- */
+        footer{padding:100px 0 60px; border-top:1px solid var(--line); margin-top:40px;}
+        .contact-title{font-family:var(--display); font-size:clamp(30px,5vw,46px); font-weight:700; letter-spacing:-1px; max-width:640px;}
+        .contact-links{display:flex; flex-wrap:wrap; gap:20px; margin-top:36px;}
+        .clink{
+            font-family:var(--mono); font-size:14px; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:4px; transition:border-color .2s, color .2s;
+        }
+        .clink:hover{color:var(--accent); border-color:var(--accent);}
+        .foot-note{margin-top:60px; font-family:var(--mono); font-size:12px; color:var(--ink-faint);}
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="wrap">
+        <div class="brand">koushik<span>.</span>dev</div>
+        <div class="navlinks">
+            <a href="#skills">Skills</a>
+            <a href="#journey">Journey</a>
+            <a href="#work">Work</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="wrap">
+        <div class="eyebrow">Bagnan, West Bengal, India</div>
+        <h1>Building full‑stack systems that <span class="accent">scale</span> — from route&nbsp;planning to production.</h1>
+        <p class="lede">I'm Koushik Samanta, a Senior Full Stack Developer with 9+ years shipping React, Node.js, and AWS‑powered applications — currently leading architecture for a multi‑tenant SaaS platform and mentoring a team of 4.</p>
+        <div class="hero-meta">
+            <div><span class="dot"></span>9+ years experience</div>
+            <div><span class="dot"></span>React · Node.js · AWS</div>
+            <div><span class="dot"></span>Leading a team of 4</div>
+        </div>
+        <div class="cta-row">
+            <a class="btn btn-primary" href="#work">View Work</a>
+            <a class="btn btn-ghost" href="mailto:koushiksamanta034@gmail.com">Get in Touch</a>
+        </div>
+    </div>
+</header>
+
+<section class="section" id="skills">
+    <div class="wrap">
+        <div class="section-head"><span class="section-num">01</span><h2>Stack</h2></div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Frontend</h3>
+                <div class="skill-tags">
+                    <span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Vite</span>
+                    <span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">JavaScript ES6+</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Backend</h3>
+                <div class="skill-tags">
+                    <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">NestJS</span>
+                    <span class="tag">Laravel</span><span class="tag">PHP</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Cloud &amp; Infra</h3>
+                <div class="skill-tags">
+                    <span class="tag">AWS Amplify</span><span class="tag">Cognito</span><span class="tag">S3</span>
+                    <span class="tag">Lambda</span><span class="tag">CloudWatch</span><span class="tag">Firebase</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Data</h3>
+                <div class="skill-tags">
+                    <span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">Firestore</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Integrations</h3>
+                <div class="skill-tags">
+                    <span class="tag">REST APIs</span><span class="tag">Stripe</span><span class="tag">PayPal</span>
+                    <span class="tag">Razorpay</span><span class="tag">OpenAI API</span><span class="tag">Mapbox</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Leadership</h3>
+                <div class="skill-tags">
+                    <span class="tag">Mentoring</span><span class="tag">Code Review</span><span class="tag">Architecture</span><span class="tag">Agile</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="journey">
+    <div class="wrap">
+        <div class="section-head"><span class="section-num">02</span><h2>Route So Far</h2></div>
+        <div class="route">
+            <div class="route-line"></div>
+
+            <div class="waypoint">
+                <div class="pin"></div>
+                <div class="waypoint-year">2023 — Present</div>
+                <h3>Senior Full Stack Developer</h3>
+                <div class="role-co">Codesigma Technology Services</div>
+                <ul>
+                    <li>Leading architecture and delivery of SalePointPRO, a multi‑tenant SaaS retail platform across Web, Android, iOS, Windows and macOS.</li>
+                    <li>Mentoring and managing a team of 4 developers.</li>
+                    <li>Migrated the core product from Firebase to React (Vite) + AWS Amplify.</li>
+                    <li>Shipped AI‑assisted features using the OpenAI API, including automated expense processing.</li>
+                </ul>
+            </div>
+
+            <div class="waypoint">
+                <div class="pin"></div>
+                <div class="waypoint-year">2020 — 2022</div>
+                <h3>Full Stack Developer</h3>
+                <div class="role-co">Codesigma Technology Services</div>
+                <ul>
+                    <li>Built eGameZone, a full‑stack esports tournament platform with real‑time wallet and payout logic.</li>
+                    <li>Delivered EaseCommerce CRM with multi‑channel webhook messaging (Next.js / NestJS / TypeScript).</li>
+                    <li>Shipped booking platforms with real‑time seat selection and Stripe payments.</li>
+                </ul>
+            </div>
+
+            <div class="waypoint">
+                <div class="pin"></div>
+                <div class="waypoint-year">2017 — 2019</div>
+                <h3>Junior Developer</h3>
+                <div class="role-co">Codesigma Technology Services</div>
+                <ul>
+                    <li>Delivered 15+ production websites and applications across WordPress, Laravel, Drupal and PrestaShop.</li>
+                    <li>Built custom WordPress plugins for cloud file uploads, transactional email, and e‑commerce personalization.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="work">
+    <div class="wrap">
+        <div class="section-head"><span class="section-num">03</span><h2>Selected Work</h2></div>
+        <div class="projects">
+
+            <div class="project flagship">
+                <div class="project-index">01</div>
+                <div>
+                    <span class="flagship-flag">Flagship · 4+ years</span>
+                    <div class="project-title">SalePointPRO — Multi‑Tenant Retail &amp; POS Platform</div>
+                    <p class="project-desc">A SaaS retail management platform spanning Web, Android, iOS, Windows and macOS — covering POS, inventory, payroll, subscriptions, and an AI‑powered assistant built on the OpenAI API.</p>
+                    <div class="project-stack">
+                        <span class="badge">React</span><span class="badge">Vite</span><span class="badge">AWS Amplify</span>
+                        <span class="badge">Cognito</span><span class="badge">Lambda</span><span class="badge">Electron.js</span><span class="badge">Cordova</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project flagship">
+                <div class="project-index">02</div>
+                <div>
+                    <span class="flagship-flag">Personal Project</span>
+                    <div class="project-title"><a href="#" target="_blank" rel="noopener">RidersMate — Group Ride Planning &amp; Live Tracking</a></div>
+                    <p class="project-desc">A cross‑platform motorcycle group‑ride app with live GPS tracking, route planning, SOS alerts, and an expense‑settlement algorithm — built with an AI‑assisted workflow using Claude Code. Replace the link with your GitHub repo once it's public.</p>
+                    <div class="project-stack">
+                        <span class="badge">React</span><span class="badge">Capacitor</span><span class="badge">Firebase</span>
+                        <span class="badge">Mapbox API</span><span class="badge">Chart.js</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-index">03</div>
+                <div>
+                    <div class="project-title">eGameZone — Esports Tournament Platform</div>
+                    <p class="project-desc">Full‑stack platform for PUBG/Free Fire tournaments with wallet management, automated prize distribution, and Razorpay payments.</p>
+                    <div class="project-stack">
+                        <span class="badge">Node.js</span><span class="badge">Express</span><span class="badge">MongoDB</span><span class="badge">Razorpay</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-index">04</div>
+                <div>
+                    <div class="project-title">EaseCommerce CRM</div>
+                    <p class="project-desc">CRM with multi‑channel customer messaging across Facebook, Instagram and Google via webhook integrations.</p>
+                    <div class="project-stack">
+                        <span class="badge">Next.js</span><span class="badge">NestJS</span><span class="badge">TypeScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-index">05</div>
+                <div>
+                    <div class="project-title">Sivananda Ashram Neyyardam — Website &amp; Booking Platform</div>
+                    <p class="project-desc">Production website on a headless CMS architecture, plus an in‑progress course booking platform.</p>
+                    <div class="project-stack">
+                        <span class="badge">React</span><span class="badge">Next.js</span><span class="badge">NestJS</span><span class="badge">Payload CMS</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="wrap">
+        <div class="section-num" style="margin-bottom:16px;">04 / Contact</div>
+        <div class="contact-title">Let's build something that scales.</div>
+        <div class="contact-links">
+            <a class="clink" href="mailto:koushiksamanta034@gmail.com">koushiksamanta034@gmail.com</a>
+            <a class="clink" href="https://www.linkedin.com/in/koushiksamanta" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="clink" href="https://github.com/" target="_blank" rel="noopener">GitHub ↗ (add your username)</a>
+        </div>
+        <div class="foot-note">Bagnan, West Bengal, India · Available for full‑stack &amp; senior engineering roles</div>
+    </div>
+</footer>
+
+<script>
+    // Reveal waypoints and projects on scroll
+    const observed = document.querySelectorAll('.waypoint, .project');
+    observed.forEach(el => { el.style.opacity = 0; el.style.transform = 'translateY(16px)'; el.style.transition = 'opacity .6s ease, transform .6s ease'; });
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    observed.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
