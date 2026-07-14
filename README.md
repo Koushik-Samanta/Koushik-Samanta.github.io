@@ -1,11 +1,12 @@
 <h1 align="center">Hi, I'm Koushik Samanta 👋</h1>
-<h3 align="center">Senior Full Stack Developer — React · Node.js · AWS</h3>
+<h3 align="center">Senior Full Stack Developer — React · Node.js</h3>
 
 <p align="center">
-  9+ years building and scaling web & mobile applications · Currently leading architecture for a multi-tenant SaaS platform · Mentoring a team of 4
+  9+ years building and scaling web & mobile applications · 25+ projects delivered · Leading architecture for a multi-tenant SaaS platform · Mentoring a team of 4
 </p>
 
 <p align="center">
+  <a href="https://koushik-samanta.github.io/"><img src="https://img.shields.io/badge/Portfolio-FF6B35?style=flat&logo=googlechrome&logoColor=white" /></a>
   <a href="https://www.linkedin.com/in/koushiksamanta"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" /></a>
   <a href="mailto:koushiksamanta034@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=flat&logo=gmail&logoColor=white" /></a>
 </p>
@@ -20,6 +21,7 @@ I'm a Senior Full Stack Developer based in West Bengal, India, working at **Code
 - 🌱 Exploring: AI-assisted development workflows (Claude Code) and LLM-powered product features
 - 👨‍🏫 Mentoring a team of 4 developers
 - 🏍️ Side project: **RidersMate** — a group motorcycle ride planning & live tracking app
+- 📄 Full project history: **[koushik-samanta.github.io](https://koushik-samanta.github.io/)**
 - 📫 Reach me at **koushiksamanta034@gmail.com**
 
 ---
@@ -37,6 +39,7 @@ I'm a Senior Full Stack Developer based in West Bengal, India, working at **Code
 ![Express](https://img.shields.io/badge/-Express-000000?style=flat-square&logo=express&logoColor=white)
 ![NestJS](https://img.shields.io/badge/-NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white)
 ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+![WordPress](https://img.shields.io/badge/-WordPress-21759B?style=flat-square&logo=wordpress&logoColor=white)
 
 **Cloud & Data**
 ![AWS](https://img.shields.io/badge/-AWS-232F3E?style=flat-square&logo=amazon-aws&logoColor=white)
@@ -47,10 +50,16 @@ I'm a Senior Full Stack Developer based in West Bengal, India, working at **Code
 
 ---
 
-### Featured Project
+### Featured Work
 
-**🏍️ RidersMate** — Group motorcycle ride planning & live GPS tracking app with route planning, SOS alerts, and an optimized expense-settlement algorithm. Built with React, Capacitor, Firebase, and the Mapbox API, using an AI-assisted development workflow with Claude Code.
+**🏆 SalePointPRO** — Multi-tenant SaaS retail & POS management platform (4+ years, Web/Android/iOS/Windows/macOS). React (Vite) + AWS Amplify, Cognito, Lambda, with an OpenAI-powered assistant and automated expense processing.
+
+**🏍️ [RidersMate](https://github.com/koushik-samanta/ridersmate)** — Group motorcycle ride planning & live GPS tracking app with route planning, SOS alerts, and an optimized expense-settlement algorithm. Built with React, Capacitor, Firebase, and the Mapbox API using an AI-assisted workflow with Claude Code.
 *(Update the link above once the repo is public.)*
+
+**🎮 eGameZone** — Full-stack esports tournament platform (Node.js/Express/MongoDB) with real-time wallets and Razorpay payments.
+
+See the **[full project archive](https://koushik-samanta.github.io/#archive)** — 25+ projects across SaaS, e-commerce, booking platforms, and CMS builds.
 
 ---
 
