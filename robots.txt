@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://koushik-samanta.github.io/sitemap.xml

@@ -11,9 +11,49 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://koushik-samanta.github.io/">
 <meta property="og:image" content="https://koushik-samanta.github.io/avatar.jpg">
+<meta property="og:site_name" content="Koushik Samanta">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Portrait of Koushik Samanta">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Koushik Samanta — Senior Full Stack Developer">
+<meta name="twitter:description" content="9+ years building web, mobile and desktop products. React, Next.js, Node.js, NestJS, Laravel, AWS and Firebase.">
+<meta name="twitter:image" content="https://koushik-samanta.github.io/avatar.jpg">
+<meta name="author" content="Koushik Samanta">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://koushik-samanta.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%237fd6a8'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='28' fill='%232a2420'%3EKS%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://koushik-samanta.github.io/#person",
+      "name": "Koushik Samanta",
+      "url": "https://koushik-samanta.github.io/",
+      "image": "https://koushik-samanta.github.io/avatar.jpg",
+      "jobTitle": "Senior Full Stack Developer",
+      "description": "Senior Full Stack Developer with 9+ years building web, mobile and desktop products with React, Next.js, Node.js, NestJS, Laravel, AWS and Firebase.",
+      "worksFor": { "@type": "Organization", "name": "Codesigma Technology Services" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Vidyasagar University" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Bagnan", "addressRegion": "West Bengal", "addressCountry": "IN" },
+      "knowsLanguage": ["English", "Bengali", "Hindi"],
+      "knowsAbout": ["React", "Next.js", "Node.js", "NestJS", "TypeScript", "Laravel", "PHP", "AWS", "Firebase", "React Native", "Electron", "Multi-tenant SaaS", "Payload CMS", "WordPress"],
+      "sameAs": ["https://www.linkedin.com/in/koushiksamanta", "https://github.com/koushik-samanta"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://koushik-samanta.github.io/#website",
+      "url": "https://koushik-samanta.github.io/",
+      "name": "Koushik Samanta — Portfolio",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://koushik-samanta.github.io/#person" }
+    }
+  ]
+}
+</script>
 <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>
@@ -406,8 +446,7 @@ footer.foot a:hover{color:var(--ink)}
       <div class="row">
         <button class="mail" id="copyMail" type="button">koushiksamanta034@gmail.com <span id="copyLabel">Copy</span></button>
         <a class="out" href="https://www.linkedin.com/in/koushiksamanta" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="out" href="https://koushik-samanta.github.io/" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="out" id="resumeBtn2" href="Koushik_Samanta_Resume.pdf" download hidden>Download résumé ↓</a>
+        <a class="out" id="resumeBtn2" href="Koushik_Samanta_Resume.pdf" download>Download Resume ↓</a>
       </div>
       <p>Bagnan, West Bengal, India · Open to full‑stack and senior engineering roles, remote or relocation.</p>
     </div>
@@ -921,7 +960,7 @@ var TAB_LABEL = {home:"Home",work:"Work",journey:"Journey",stack:"Stack",contact
   var mq = MARQUEE.concat(MARQUEE).concat(MARQUEE).concat(MARQUEE);
   $("#marquee").innerHTML = mq.map(function (m) { return "<span>" + esc(m) + "</span>"; }).join("");
 
-  if (AVATAR_SRC) { $("#avatar").innerHTML = '<img src="' + esc(AVATAR_SRC) + '" alt="">'; }
+  if (AVATAR_SRC) { $("#avatar").innerHTML = '<img src="' + esc(AVATAR_SRC) + '" alt="Koushik Samanta" width="640" height="640">'; }
 
   $("#route").innerHTML = ROLES.map(function (r, i) {
     return '<article class="rise" style="--d:' + (i * .12) + 's;--dot:var(' + (i % 2 ? "--acc2" : "--acc") + ')">' +
