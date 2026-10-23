@@ -74,12 +74,6 @@
   --ease:cubic-bezier(.2,.8,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:oklch(0.19 0.012 50);--ink:oklch(0.96 0.008 70);--surface:oklch(0.25 0.014 50);
-    --muted:oklch(0.74 0.015 60);--line:oklch(0.36 0.014 50);--glass:oklch(0.23 0.012 50 / .8);color-scheme:dark;
-  }
-}
 :root[data-theme="dark"]{
   --bg:oklch(0.19 0.012 50);--ink:oklch(0.96 0.008 70);--surface:oklch(0.25 0.014 50);
   --muted:oklch(0.74 0.015 60);--line:oklch(0.36 0.014 50);--glass:oklch(0.23 0.012 50 / .8);color-scheme:dark;
@@ -1086,8 +1080,7 @@ var TAB_LABEL = {home:"Home",work:"Work",journey:"Journey",stack:"Stack",contact
 
   /* ---- theme ---- */
   $("#theme").addEventListener("click", function () {
-    var root = document.documentElement, dark = root.getAttribute("data-theme") === "dark" ||
-      (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    var root = document.documentElement, dark = root.getAttribute("data-theme") === "dark";
     var next = dark ? "light" : "dark"; root.setAttribute("data-theme", next);
     try { localStorage.setItem("ks-theme", next); } catch (e) {}
   });
