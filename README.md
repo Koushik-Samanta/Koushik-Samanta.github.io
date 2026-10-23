@@ -1,5 +1,5 @@
 <h1 align="center">Hi, I'm Koushik Samanta 👋</h1>
-<h3 align="center">Senior Full Stack Developer — React · Node.js</h3>
+<h3 align="center">Senior Software Developer — React · Node.js</h3>
 
 <p align="center">
   9+ years building and scaling web & mobile applications · 25+ projects delivered · Leading architecture for a multi-tenant SaaS platform · Mentoring a team of 4
@@ -15,7 +15,7 @@
 
 ### About me
 
-I'm a Senior Full Stack Developer based in West Bengal, India, working at **Codesigma Technology Services** since 2017. I currently lead development on **SalePointPRO**, a multi-tenant SaaS retail management platform spanning Web, Android, iOS, Windows, and macOS — covering everything from POS and inventory to AI-assisted expense processing built on the OpenAI API.
+I'm a Senior Software Developer based in West Bengal, India, working at **Codesigma Technology Services** since 2017. I currently lead development on **SalePointPRO**, a multi-tenant SaaS retail management platform spanning Web, Android, iOS, Windows, and macOS — covering everything from POS and inventory to AI-assisted expense processing built on the OpenAI API.
 
 - 🔭 Currently building: multi-tenant SaaS architecture on React (Vite) + AWS Amplify
 - 🌱 Exploring: AI-assisted development workflows (Claude Code) and LLM-powered product features
@@ -63,4 +63,4 @@ See the **[full project archive](https://koushik-samanta.github.io/#archive)** �
 
 ---
 
-<p align="center"><i>Open to full-stack & senior engineering opportunities.</i></p>
+<p align="center"><i>Open to senior software engineering opportunities.</i></p>
