@@ -196,7 +196,6 @@ section.tab>.pad{padding:clamp(36px,6vw,72px) 0 0}
 .filters button{border:1.5px solid var(--ink);cursor:pointer;padding:8px 16px;border-radius:999px;font:500 14px 'Geist',sans-serif;background:transparent;transition:background .25s,color .25s,transform .3s var(--spring)}
 .filters button:hover{transform:translateY(-2px)}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.filters .all{margin-left:auto;border-style:dashed}
 .archive{display:grid;grid-template-columns:1fr;gap:10px}
 .proj{border-radius:calc(var(--k) * 30px);background:var(--surface);transition:background .35s,color .35s;animation:rise .6s var(--ease) both;animation-delay:var(--d,0s);scroll-margin-top:96px}
 .proj[open]{background:var(--acc);color:var(--on-acc)}
@@ -304,7 +303,6 @@ footer.foot a:hover{color:var(--ink)}
   .hero .lede{font-size:14px;line-height:1.45}
   .stats div{padding:8px 12px}
   .art .now{left:0}
-  .filters .all{margin-left:0}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -454,7 +452,7 @@ footer.foot a:hover{color:var(--ink)}
 </section>
 
 <footer class="foot">
-  <span>© 2026 Koushik Samanta</span>
+  <span>© <span id="year">2026</span> Koushik Samanta</span>
   <a id="next" href="#work">Next: Work →</a>
 </footer>
 </main>
@@ -957,6 +955,7 @@ var TAB_LABEL = {home:"Home",work:"Work",journey:"Journey",stack:"Stack",contact
 
   /* ---- static fills ---- */
   $("#statProjects").textContent = PROJECTS.length;
+  $("#year").textContent = new Date().getFullYear();
   var mq = MARQUEE.concat(MARQUEE).concat(MARQUEE).concat(MARQUEE);
   $("#marquee").innerHTML = mq.map(function (m) { return "<span>" + esc(m) + "</span>"; }).join("");
 
@@ -979,7 +978,7 @@ var TAB_LABEL = {home:"Home",work:"Work",journey:"Journey",stack:"Stack",contact
   /* ---- archive ---- */
   $("#filters").innerHTML = FILTERS.map(function (f) {
     return '<button type="button" data-cat="' + f[0] + '" aria-pressed="' + (f[0] === "all") + '">' + esc(f[1]) + '</button>';
-  }).join("") + '<button type="button" class="all" id="toggleAll">Expand all</button>';
+  }).join("");
 
   function haystack(p) {
     var s = [p.title, p.sub, p.when, p.type || "", p.ai || "", p.stack.join(" ")];
@@ -1025,30 +1024,25 @@ var TAB_LABEL = {home:"Home",work:"Work",journey:"Journey",stack:"Stack",contact
     $("#empty").hidden = list.length > 0;
     $("#archCount").textContent = list.length + " of " + PROJECTS.length + " projects — client, collaborative and personal";
     $$("#filters [data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.cat === state.cat)); });
-    syncToggleAll();
-  }
-  function syncToggleAll() {
-    var ds = $$("#archive details"), allOpen = ds.length > 0 && ds.every(function (d) { return d.open; });
-    $("#toggleAll").textContent = allOpen ? "Collapse all" : "Expand all";
   }
 
   $("#archive").addEventListener("toggle", function (e) {
-    var d = e.target; if (d.dataset && d.dataset.id) { state.open[d.dataset.id] = d.open; syncToggleAll(); }
+    var d = e.target; if (!d.dataset || !d.dataset.id) return;
+    if (d.open) {
+      state.open = {}; state.open[d.dataset.id] = true;
+      $$("#archive details[open]").forEach(function (o) { if (o !== d) o.open = false; });
+      requestAnimationFrame(function () { d.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }); });
+    } else delete state.open[d.dataset.id];
   }, true);
   $("#filters").addEventListener("click", function (e) {
     var b = e.target.closest("button"); if (!b) return;
-    if (b.id === "toggleAll") {
-      var ds = $$("#archive details"), openAll = !ds.every(function (d) { return d.open; });
-      ds.forEach(function (d) { d.open = openAll; state.open[d.dataset.id] = openAll; });
-      syncToggleAll(); return;
-    }
     state.cat = b.dataset.cat; renderArchive();
   });
   $("#q").addEventListener("input", function (e) { state.q = e.target.value; renderArchive(); });
 
   function openProject(id) {
     if (!byId[id]) return;
-    state.cat = "all"; state.q = ""; $("#q").value = ""; state.open[id] = true;
+    state.cat = "all"; state.q = ""; $("#q").value = ""; state.open = {}; state.open[id] = true;
     renderArchive();
     var el = document.getElementById("p-" + id);
     if (el) el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
