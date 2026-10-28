@@ -237,6 +237,13 @@ section.tab>.pad{padding:clamp(36px,6vw,72px) 0 0}
 .edu b{display:block;font:600 18px/1.3 var(--display)}
 .edu span{display:block;color:var(--muted);font-size:14px}
 .edu em{font:12px var(--mono);font-style:normal;color:var(--muted)}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:clamp(40px,6vw,72px)}
+.certs h3{grid-column:1/-1;font:800 clamp(28px,3.4vw,44px)/1 var(--display);letter-spacing:-.03em}
+.certs>div{padding:22px 24px;border-radius:calc(var(--k) * 32px);border:1.5px dashed var(--line)}
+.certs b{display:block;font:600 18px/1.3 var(--display)}
+.certs span{display:block;color:var(--muted);font-size:14px}
+.certs em{display:block;margin-top:8px;font:12px var(--mono);font-style:normal;color:var(--muted);overflow-wrap:anywhere}
+.certs a{display:inline-block;margin-top:12px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);font:500 13px var(--mono);text-decoration:none}
 
 /* ---------- stack ---------- */
 .stack{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:18px}
@@ -410,9 +417,12 @@ footer.foot a:hover{color:var(--ink)}
     <div class="edu">
       <h3>Training &amp; education</h3>
       <div><b>Software Development Training</b><span>Codesigma Technology Services · 3 months</span><em>2016</em></div>
-      <div><b>Bachelor of Computer Applications</b><span>Vidyasagar University, Midnapore</span><em>2012 – 2015</em></div>
-      <div><b>Higher Secondary (WBCHSE)</b><span>Bagnan High School, Howrah</span><em>2012</em></div>
-      <div><b>Secondary (WBBSE)</b><span>Bagnan High School, Howrah</span><em>2010</em></div>
+      <div><b>Bachelor of Computer Applications</b><span>Vidyasagar University, Midnapore · Score: 57.93%</span><em>2012 – 2015</em></div>
+      <div><b>Higher Secondary (WBCHSE)</b><span>Bagnan High School, Howrah · Score: 53.40%</span><em>2012</em></div>
+      <div><b>Secondary (WBBSE)</b><span>Bagnan High School, Howrah · Score: 60%</span><em>2010</em></div>
+    </div>
+    <div class="certs" id="certs">
+      <h3>Licenses &amp; certifications</h3>
     </div>
   </div>
 </section>
@@ -931,6 +941,13 @@ var STACK = [
  ["AI Tools",["Claude Code","Claude Design","OpenAI (ChatGPT) API"]]
 ];
 
+/* Certifications — add a `url` to show a "Show credential" link */
+var CERTS = [
+ {name:"Claude Academy: Claude 101", org:"Anthropic", issued:"Oct 2026", id:"d3ab90c8ed7fb296747979dfa0baa86d", url:"https://academy.claude.com/verify/d3ab90c8ed7fb296747979dfa0baa86d"},
+ {name:"Claude Academy: Claude Code 101", org:"Anthropic", issued:"Oct 2026", id:"a5eff3848efa5ed7b7730919ed4ba260", url:"https://academy.claude.com/verify/a5eff3848efa5ed7b7730919ed4ba260", skills:"AI Pair Programming, Agentic Workflows"},
+ {name:"C#, ASP .NET", org:"IIHT Kolkata, Park Street", issued:"Jul 2016"}
+];
+
 var MARQUEE = ["React","Node.js","AWS Amplify","Next.js","NestJS","TypeScript","Laravel","MongoDB","AWS DynamoDB","Stripe","OpenAI API","Electron","Mapbox"];
 var FILTERS = [["all","All"],["key","Key projects"],["js","JavaScript / TypeScript"],["php","Laravel & PHP"],["cms","WordPress & CMS"],["ai","AI‑assisted"]];
 var TABS = ["home","work","journey","stack","contact"];
@@ -968,6 +985,13 @@ var TAB_LABEL = {home:"Home",work:"Work",journey:"Journey",stack:"Stack",contact
       '<div class="h"><h3>' + esc(g[0]) + '</h3><span class="n">' + String(i + 1).padStart(2, "0") + '</span></div>' +
       '<div class="chips">' + g[1].map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("") + '</div></div>';
   }).join("");
+
+  $("#certs").insertAdjacentHTML("beforeend", CERTS.map(function (c) {
+    return '<div><b>' + esc(c.name) + '</b><span>' + esc(c.org) + '</span><em>Issued ' + esc(c.issued) + '</em>' +
+      (c.id ? '<em>Credential ID ' + esc(c.id) + '</em>' : '') +
+      (c.skills ? '<em>Skills: ' + esc(c.skills) + '</em>' : '') +
+      (c.url ? '<a href="' + esc(c.url) + '" target="_blank" rel="noopener">Show credential ↗</a>' : '') + '</div>';
+  }).join(""));
 
   /* ---- archive ---- */
   $("#filters").innerHTML = FILTERS.map(function (f) {
